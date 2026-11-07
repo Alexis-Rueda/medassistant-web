@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { KEYCLOAK_EVENT_SIGNAL, KeycloakEventType, typeEventArgs, ReadyArgs } from 'keycloak-angular';
 import Keycloak from 'keycloak-js';
@@ -9,28 +9,36 @@ import Keycloak from 'keycloak-js';
   templateUrl: './login-page.html',
 })
 export default class LoginPage {
-  authenticated = false;
-  keycloakStatus: string | undefined;
+  authenticated = signal(false);
   private readonly keycloak = inject(Keycloak);
+  private readonly router = inject(Router);
   private readonly keycloakSignal = inject(KEYCLOAK_EVENT_SIGNAL);
 
-  constructor(private router: Router) {
+  constructor() {
     effect(() => {
       const keycloakEvent = this.keycloakSignal();
 
-      this.keycloakStatus = keycloakEvent.type;
-
       if (keycloakEvent.type === KeycloakEventType.Ready) {
-        this.authenticated = typeEventArgs<ReadyArgs>(keycloakEvent.args);
+        this.authenticated.set(typeEventArgs<ReadyArgs>(keycloakEvent.args));
       }
 
       if (keycloakEvent.type === KeycloakEventType.AuthLogout) {
-        this.authenticated = false;
+        this.authenticated.set(false);
       }
     });
   }
 
   login() {
-    this.keycloak.login();
+    this.keycloak.login({ prompt: 'login' });
+  }
+
+  continueToApp() {
+    this.router.navigate(['/home']);
+  }
+
+  switchAccount() {
+    this.keycloak.logout({
+      redirectUri: window.location.origin + '/auth/login'
+    });
   }
 }

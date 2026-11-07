@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { canActivateAuthRole } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,11 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.routes')
+    loadChildren: () => import('./home/home.routes'),
+    canActivate: [canActivateAuthRole],
+    data: {
+      role: ['PATIENT', 'ADMIN']
+    }
   },
   {
     path: '**',
