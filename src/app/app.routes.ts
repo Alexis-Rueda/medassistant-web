@@ -15,6 +15,14 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.routes'),
+    canActivate: [canActivateAuthRole],
+    data: {
+      role: ['PATIENT', 'ADMIN']
+    }
+  },
+  {
     path: 'agent',
     loadChildren: () => import('./agent/agent.routes'),
     canActivate: [canActivateAuthRole],
