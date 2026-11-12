@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
-import { AppointmentPage } from "./pages/appointment-page/appointment-page";
-import { OpenPage } from "./pages/open-page/open-page";
-import { OrchestratorPage } from "./pages/orchestrator-page/orchestrator-page";
-import { RoutingPage } from "./pages/routing-page/routing-page";
 import { AppLayout } from "@shared/layouts/app-layout/app-layout";
+import {
+  OpenPage, AppointmentPage,
+  OrchestratorPage, RoutingPage
+} from "./pages";
 
 const agentRoutes: Routes = [
   {

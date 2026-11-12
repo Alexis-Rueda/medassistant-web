@@ -2,23 +2,21 @@ import { Component, inject } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import Keycloak from 'keycloak-js';
 import { CommonModule } from '@angular/common';
-import agentRoutes from '../../../agent/agent.routes';
-import chatRoutes from '../../../chat/chat.routes';
+import { NavItems } from '@shared/components/nav-items/nav-items';
 
 @Component({
   selector: 'app-app-layout',
   imports: [
     RouterOutlet,
     CommonModule,
-    RouterModule
-  ],
+    RouterModule,
+    NavItems
+],
   templateUrl: './app-layout.html',
 })
 export class AppLayout {
 
   private readonly keycloak = inject(Keycloak);
-  agentRoutes = agentRoutes[0].children?.filter((route) => route.path !== '**');
-  chatRoutes = chatRoutes[0].children?.filter((route) => route.path !== '**');
 
   logout() {
     this.keycloak.logout({
