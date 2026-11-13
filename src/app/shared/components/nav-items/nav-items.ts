@@ -50,6 +50,16 @@ export class NavItems {
         { label: 'Orchestrator', route: '/agent/orchestrator' },
         { label: 'Routing', route: '/agent/routing' }
       ]
+    },
+    {
+      label: 'Analysis',
+      route: '/analysis',
+      children: [
+        { label: 'Condition', route: '/analysis/condition' },
+        { label: 'Conditions', route: '/analysis/conditions' },
+        { label: 'Symptoms', route: '/analysis/symptoms' },
+        { label: 'Classify', route: '/analysis/classify' },
+      ]
     }
   ];
 

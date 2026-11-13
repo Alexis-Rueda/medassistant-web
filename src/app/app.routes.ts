@@ -31,6 +31,14 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'analysis',
+    loadChildren: () => import('./analysis/analysis.routes'),
+    canActivate: [canActivateAuthRole],
+    data: {
+      role: ['PATIENT', 'ADMIN']
+    }
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
