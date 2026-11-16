@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
+import { AppLayout } from "@shared/layouts/app-layout/app-layout";
 import {
   ChatPage, ChatStreamPage, ConsultPage,
   DiagnosePage, ExplainPage, SymptomsPage
 } from "./pages";
-import { AppLayout } from "@shared/layouts/app-layout/app-layout";
 
 const chatRoutes: Routes = [
   {
@@ -11,7 +11,7 @@ const chatRoutes: Routes = [
     component: AppLayout,
     children: [
       {
-        path: '',
+        path: 'page',
         component: ChatPage
       },
       {
@@ -36,7 +36,7 @@ const chatRoutes: Routes = [
       },
       {
         path: '**',
-        redirectTo: ''
+        redirectTo: 'page'
       }
     ]
   },
