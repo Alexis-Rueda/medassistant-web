@@ -1,0 +1,24 @@
+<div class="col-start-1 col-end-9 p-3 rounded-lg">
+  <div class="flex flex-row items-start">
+
+    <div class="chat chat-start">
+      <div class="chat-image avatar">
+        <div class="w-10 rounded-full">
+          <img alt="Tailwind CSS chat bubble component"
+            src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
+        </div>
+      </div>
+      <div class="chat-bubble chat-bubble-secondary">
+        {{ text() }}
+        @if ( audioUrl() ) {
+        <audio controls [src]="audioUrl()" autoplay class="w-full"></audio>
+        }
+
+        @if ( imageInfo() ) {
+        <img [src]="imageInfo()!.url" [alt]="imageInfo()!.alt" class="rounded-xl w-96 h-96 object-cover" />
+        }
+      </div>
+    </div>
+
+  </div>
+</div>
