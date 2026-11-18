@@ -3,5 +3,6 @@ export const environment = {
     realm: '',
     url: '',
     clientId: ''
-  }
+  },
+  apiUrl: '/api',
 };
