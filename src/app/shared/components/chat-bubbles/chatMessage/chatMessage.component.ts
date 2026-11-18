@@ -1,8 +1,9 @@
 import { Component, input } from '@angular/core';
+import { MarkdownComponent } from 'ngx-markdown';
 
 @Component( {
   selector: 'app-chat-message',
-  imports: [],
+  imports: [MarkdownComponent],
   templateUrl: './chatMessage.component.html',
 } )
 export class ChatMessageComponent {
