@@ -6,7 +6,6 @@ import { Message } from '@shared/interfaces';
 import { ChatService } from '../../chat.service';
 
 @Component({
-  selector: 'app-chat-page',
   imports: [
     CommonModule,
     ReactiveFormsModule,

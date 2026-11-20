@@ -20,4 +20,12 @@ export class ChatService {
     );
   }
 
+  sentDiagnoseMessage(message: Request): Observable<string> {
+    return this.http.post<string>(
+      `${API_URL}/chat/diagnose`,
+      { prompt: message.prompt, model: message.model },
+      { responseType: 'text' }
+    );
+  }
+
 }
