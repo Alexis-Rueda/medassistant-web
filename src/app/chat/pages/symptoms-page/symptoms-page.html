@@ -1,1 +1,26 @@
-<p>symptoms-page works!</p>,
+<div class="card lg:card-side bg-base-100 shadow-sm">
+  <div class="card-body">
+
+    <div class="grid gap-y-2">
+
+      <!-- Chat Messages -->
+      <app-chat-message text="Saludos, soy MedAssistant, ¿Qué sintomas tienes?" />
+
+      @for (message of messages(); track $index) {
+      @if( message.isLLM ) {
+      <app-chat-message [text]="message.text" />
+      } @else {
+      <app-my-message [text]="message.text" />
+      }
+      }
+
+      @if (isLoading()) {
+      <app-typing-loader />
+      }
+
+    </div>
+
+    <!-- MessageBox -->
+    <app-text-message-box placeholder="Escribe aquí lo que deseas" (onMessage)="handleMessage($event)" />
+  </div>
+</div>
