@@ -1,10 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="handleSubmit()"
-  class="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
+  class="flex flex-row items-center h-16 rounded-xl w-full px-4">
 
   <div class="grow">
     <div class="joins relative w-full">
       <input type="text" autofocus
-        class="input join-item flex w-full border rounded-xl text-gray-800 focus:outline-none focus:border-indigo-300 pl-4 h-10"
+        class="input join-item flex w-full border rounded-xl  focus:outline-none focus:input-info pl-4 h-10"
         [placeholder]="placeholder" formControlName="prompt" [autocomplete]=" disableCorrections ? 'on':'off'"
         [spellcheck]=" disableCorrections ? 'on':'off'" />
     </div>

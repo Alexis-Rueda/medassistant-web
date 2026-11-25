@@ -3,6 +3,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import Keycloak from 'keycloak-js';
 import { CommonModule } from '@angular/common';
 import { NavItems } from '@shared/components/nav-items/nav-items';
+import { ThemeController } from '@shared/components/theme-controller/theme-controller';
 
 @Component({
   selector: 'app-app-layout',
@@ -10,7 +11,8 @@ import { NavItems } from '@shared/components/nav-items/nav-items';
     RouterOutlet,
     CommonModule,
     RouterModule,
-    NavItems
+    NavItems,
+    ThemeController
 ],
   templateUrl: './app-layout.html',
 })
